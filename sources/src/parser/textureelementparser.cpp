@@ -62,6 +62,8 @@ namespace citygml {
 
         if (node == NodeType::APP_ImageURINode
             || node == NodeType::APP_TextureTypeNode
+            || node == NodeType::APP_TextureParameterizationNode
+            || node == NodeType::APP_TextureAssociationNode
             || node == NodeType::APP_WrapModeNode
             || node == NodeType::APP_BorderColorNode
             || node == NodeType::APP_TexCoordListNode
@@ -101,6 +103,9 @@ namespace citygml {
         } else if (node == NodeType::APP_TextureTypeNode) {
 
             m_model->setAttribute(node.name(), characters);
+        } else if (node == NodeType::APP_TextureParameterizationNode
+                    || node == NodeType::APP_TextureAssociationNode) {
+            // Do nothing (target and texture coords are set in child element)
         } else if (node == NodeType::APP_WrapModeNode) {
 
             if (!m_model->setWrapModeFromString(characters)) {
