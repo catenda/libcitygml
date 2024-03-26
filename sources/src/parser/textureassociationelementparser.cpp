@@ -97,16 +97,15 @@ namespace citygml {
         } else if (node == NodeType::APP_TextureCoordinatesNode) {
 
             if (!m_texCoordData.empty()) {
-                m_texCoordData = parseVecList<TVec2f>(characters, m_logger, getDocumentLocation());
-            } else {
                 CITYGML_LOG_WARN(m_logger, "Unexpected end tag <" << NodeType::APP_TextureCoordinatesNode << " at: " << getDocumentLocation());
             }
+            m_texCoordData = parseVecList<TVec2f>(characters, m_logger, getDocumentLocation());
         } else if (node == NodeType::APP_TargetNode) {
             const std::string uri = parseReference(characters, m_logger, getDocumentLocation());
             m_currentTexTargetDef = m_factory.createTextureTargetDefinition(uri, m_model, m_lastTargetDefinitionID);
             m_lastTargetDefinitionID = "";
         } else if (node == NodeType::APP_RingNode) {
-            m_ringId = characters;
+            m_ringId = parseReference(characters, m_logger, getDocumentLocation());
         } else {
             return GMLObjectElementParser::parseChildElementEndTag(node, characters);
         }
