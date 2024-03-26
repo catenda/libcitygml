@@ -1,10 +1,12 @@
 #pragma once
 
 #include <parser/gmlobjectparser.h>
+#include <citygml/vecs.hpp>
 
 #include <functional>
 #include <memory>
 #include <string>
+#include <vector>
 
 namespace citygml {
 
@@ -33,9 +35,10 @@ namespace citygml {
     private:
         std::shared_ptr<Texture> m_model;
         std::shared_ptr<TextureTargetDefinition> m_currentTexTargetDef;
-        std::shared_ptr<TextureCoordinates> m_currentTexCoords;
-        std::string m_currentTargetUri;
-        std::string m_currentGmlId;
+        std::string m_lastTargetDefinitionID;
+        std::string m_ringId;
+        std::string m_texCoordGmlId;
+        std::vector<TVec2f> m_texCoordData;
     };
 
 }
