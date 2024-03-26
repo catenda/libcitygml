@@ -367,6 +367,7 @@ namespace citygml {
         NODETYPE( APP, TexCoordList )
         NODETYPE( APP, TexCoordGen )
         NODETYPE( APP, TextureCoordinates )
+        NODETYPE( APP, Ring )
         NODETYPE( APP, WorldToTexture )
         NODETYPE( APP, TextureType )
         NODETYPE( APP, Repeat )
