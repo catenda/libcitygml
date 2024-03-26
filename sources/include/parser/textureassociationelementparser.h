@@ -14,6 +14,7 @@ namespace citygml {
     class TextureTargetDefinition;
     class TextureCoordinates;
 
+    // Parser for CityGML 3.0 TextureAssociation elements
     class TextureAssociationElementParser : public GMLObjectElementParser {
     public:
         TextureAssociationElementParser(CityGMLDocumentParser& documentParser, CityGMLFactory& factory, std::shared_ptr<CityGMLLogger> logger, std::shared_ptr<Texture> texture);
